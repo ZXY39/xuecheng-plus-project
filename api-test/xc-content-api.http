@@ -1,5 +1,5 @@
 ### a
-POST {{content_host}} /content/course/list?pageNo=1&pageSize=2
+POST {{gateway_host}} /content/course/list?pageNo=1&pageSize=2
 Content-Type: application/json
 
 {
@@ -9,12 +9,13 @@ Content-Type: application/json
 }
 
 
+
 ### b
-GET {{content_host}} /content/course-category/tree-nodes
+GET {{content_host}} /content/course/40
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ7XCJjb21wYW55SWRcIjpcIjEyMzIxNDE0MjVcIixcImNyZWF0ZVRpbWVcIjpcIjIwMjItMDktMjhUMDg6MzI6MDNcIixcImlkXCI6XCI1MlwiLFwibmFtZVwiOlwiTeiAgeW4iFwiLFwic2V4XCI6XCIxXCIsXCJzdGF0dXNcIjpcIlwiLFwidXNlcm5hbWVcIjpcInQxXCIsXCJ1dHlwZVwiOlwiMTAxMDAyXCJ9Iiwic2NvcGUiOlsiYWxsIl0sImV4cCI6MTY3OTMyNTQ5OSwiYXV0aG9yaXRpZXMiOlsidGVzdCJdLCJqdGkiOiJkOGExNDJmMi02NWI0LTRkZjAtYjk2OC0xM2I4ZTA2NWYyZDYiLCJjbGllbnRfaWQiOiJYY1dlYkFwcCJ9.OxbjFqY7Fjq5YAnBdnlcKQ7dFGnuKv0OCmzKICa41-c
 
 ### 创建课程
 POST {{content_host}}/content/course
-Content-Type: application/json
 
 {
   "charge": "201001",

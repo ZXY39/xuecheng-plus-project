@@ -1,0 +1,7 @@
+2023-03-16 22:23:53,793 ERROR [reactor-http-nio-14][CompositeLog.java:122] - [05ea33d8-29]  500 Server Error for HTTP POST "/media/upload/mergechunks"
+reactor.netty.http.client.PrematureCloseException: Connection prematurely closed BEFORE response
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	|_ checkpoint ⇢ org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	|_ checkpoint ⇢ HTTP POST "/media/upload/mergechunks" [ExceptionHandlingWebHandler]
+Stack trace:

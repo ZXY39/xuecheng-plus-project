@@ -9,9 +9,12 @@ import com.xuecheng.content.model.dto.EditCourseDto;
 import com.xuecheng.content.model.dto.QueryCourseParamsDto;
 import com.xuecheng.content.model.po.CourseBase;
 import com.xuecheng.content.service.CourseBaseInfoService;
+import com.xuecheng.content.util.SecurityUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +32,16 @@ public class CourseBaseInfoController {
 
 
     @ApiOperation("课程查询接口")
+    @PreAuthorize("hasAuthority('xc_teachmanager_course_list')")
     @PostMapping("/course/list")
     public PageResult<CourseBase> list(PageParams params, @RequestBody(required = false) QueryCourseParamsDto queryCourseParamsDto){
-        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(params, queryCourseParamsDto);
+        SecurityUtil.XcUser user = SecurityUtil.getUser();
+        String cId = user.getCompanyId();
+        Long companyId=null;
+        if(StringUtils.isNotEmpty(cId)){
+          companyId = Long.parseLong(cId);
+        }
+        PageResult<CourseBase> courseBasePageResult = courseBaseInfoService.queryCourseBaseList(companyId,params, queryCourseParamsDto);
         return  courseBasePageResult;
     }
 
@@ -46,6 +56,8 @@ public class CourseBaseInfoController {
     @ApiOperation("id查询课程接口")
     @GetMapping ("/course/{courseId}")
     public CourseBaseInfoDto getCourseBaseById(@PathVariable Long courseId){
+        SecurityUtil.XcUser user = SecurityUtil.getUser();
+        System.out.println(user.getUsername());
         CourseBaseInfoDto courseBaseInfo = courseBaseInfoService.getCourseBaseInfo(courseId);
 
         return courseBaseInfo;

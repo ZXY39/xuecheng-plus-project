@@ -1,0 +1,38 @@
+### a
+POST {{gateway_host}} /content/course/list?pageNo=1&pageSize=2
+Content-Type: application/json
+
+{
+  "auditStatus": "202004",
+  "courseName": "java",
+  "publishStatus": ""
+}
+
+
+
+### b
+GET {{gateway_host}} /content/course/40
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsieHVlY2hlbmctcGx1cyJdLCJ1c2VyX25hbWUiOiJ6aGFuZ3NhbiIsInNjb3BlIjpbImFsbCJdLCJleHAiOjE2NzkzMjI4MjMsImF1dGhvcml0aWVzIjpbInAxIl0sImp0aSI6IjdmNzIxM2NmLTc5ODgtNGFjNS05MDg4LTEwZmUxODhkZDhiMyIsImNsaWVudF9pZCI6IlhjV2ViQXBwIn0.exn4dz_UIFQMUxi7PrD1iZQ-U4AY6wadoATMqVKMFAE
+
+### 创建课程
+POST {{content_host}}/content/course
+
+{
+  "charge": "201001",
+  "price": 0,
+  "originalPrice":0,
+  "qq": "22333",
+  "wechat": "223344",
+  "phone": "13333333",
+  "validDays": 365,
+  "mt": "1-1",
+  "st": "1-1-1",
+  "name": "",
+  "pic": "",
+  "teachmode": "200002",
+  "users": "初级人员",
+  "tags": "",
+  "grade": "204001",
+  "description": "",
+  "objectives": ""
+}
